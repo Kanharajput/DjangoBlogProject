@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block page_title %} {% endblock page_title %}</title>
+    <link rel="stylesheet" href="{% block css_href %}{% endblock css_href %}">       <!--only need to pass the path-->
+</head>
+<body>
+    {% block content %}
+        <!--content is injected here-->
+    {% endblock content %}
+</body>
+</html>
