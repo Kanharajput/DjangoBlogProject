@@ -14,14 +14,10 @@
 <section id="all-blogs">
   <h2>My Collected Posts</h2>
   <ul>
-    <!-- same blog is included multiple times this will be different blogs but for 
-    now it is only to save time-->
-      {% include "includes/blog.html" %}
-      {% include "includes/blog.html" %}
-      {% include "includes/blog.html" %}
-      {% include "includes/blog.html" %}
-      {% include "includes/blog.html" %}
-      {% include "includes/blog.html" %}
+      <!-- get all blogs-->
+      {% for blog in all_blogs %}
+        {% include "includes/blog.html" %}
+      {% endfor %}
   </ul>
 </section>
 {% endblock content %}
