@@ -7,4 +7,4 @@ def showAllBlogs(request):
     return render(request,'AllBlogs/all_blogs.html')
 
 def blogDetails(request,blog_name):
-    return HttpResponse(str(blog_name) + " about this blog")
+    return render(request,'AllBlogs/blog_detail.html')
