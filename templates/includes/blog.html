@@ -3,11 +3,12 @@ and it  save our work and time by just including without copying the same data s
 {% load static %}
 <li>
     <article class="blog">
-      <a href="{% url 'blogDetails_page' "kanha" %}">     <!--kanha is slug here because url have a slug/variable-->
-        <image src="{% static 'images/moutain.jpg' %}" alt="Moutain hiking">
+      <a href="{% url 'blogDetails_page' blog.slug %}">     <!--Different slug for different blog as slug will create a different url-->
+        <!--dtl filter to add back or url dynamic url creation-->
+        <image src="{% static 'images/'|add:blog.image %}" alt="{{blog.title}}">
         <div class="blog__content">
-          <h3>Mountain Hiking</h3>
-          <p>There's nothing like the view you get when hiking in the mountain ! And I wasn't prepared for what happened whilst I enjoying the view</P>
+          <h3>{{blog.title}}</h3>
+          <p>{{blog.exerpt}}</P>
         </div>
       </a>
     </article>

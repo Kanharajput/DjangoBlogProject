@@ -20,11 +20,10 @@
 
   <section id="latest-blogs">
     <h2> My latest thoughts </h2>
-    <ul>   
-      <!--single blog is shown as we only want to show the latest blog,
-          put it in the base template direcory because it is also included by the AllBlogs app
-      -->   
-      {% include 'includes/blog.html' %}     <!-- getting this from root template folder because it is also needed by AllBlogs app-->
+    <ul>
+      {% for blog in latest_blogs %}
+        {% include 'includes/blog.html' %}     <!-- getting this from root template folder because it is also needed by AllBlogs app-->
+      {% endfor %}
     </ul>
   </section>
 
