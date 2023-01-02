@@ -6,39 +6,25 @@
 
 {% block css_files %}
   <link rel="stylesheet" href="{% static 'Home/home.css' %}">
-  <link rel="stylesheet" href="{% static 'base.css' %}">  
+  <link rel="stylesheet" href="{% static 'blog.css' %}">
 {% endblock css_files %}
 
 {% block content %}
-  <header id="main-navigation">
-    <h1><a href="">Kanha's Blog</h1>
-      <nav>
-        <a href="">All Blogs</a>
-      </nav>  
-  </header>
-
-  <section id="welcome">
-    <header>
-      <img src="{% static 'Home/images/kanha.jpg' %}" alt="Kanha the author of this blog"/>
-      <h2> Kanha's Blog </h2>
-    </header>
-    <p> Hi, I am Kanha. I love to blog and web development</p>
-  </section>
+    <section id="welcome">
+      <header>
+        <img src="{% static 'Home/images/kanha.jpg' %}" alt="Kanha the author of this blog"/>
+        <h2> Kanha's Blog </h2>
+      </header>
+      <p> Hi, I am Kanha. I love to blog and web development</p>
+    </section>
 
   <section id="latest-blogs">
     <h2> My latest thoughts </h2>
-    <ul>
-      <li>
-        <article class="blog">
-          <a href="">
-            <image src="{% static 'Home/images/moutain.jpg' %}" alt="Moutain hiking">
-            <div class="blog__content">
-              <h3>Mountain Hiking</h3>
-              <p>There's nothing like the view you get when hiking in the mountain ! And I wasn't prepared for what happened whilst I enjoying the view</P>
-            </div>
-          </a>
-        </article>
-      </li>
+    <ul>   
+      <!--single blog is shown as we only want to show the latest blog,
+          put it in the base template direcory because it is also included by the AllBlogs app
+      -->   
+      {% include 'includes/blog.html' %}     <!-- getting this from root template folder because it is also needed by AllBlogs app-->
     </ul>
   </section>
 

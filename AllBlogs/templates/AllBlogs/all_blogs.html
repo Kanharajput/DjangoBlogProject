@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} 
+    All My Blogs
+{% endblock title%} 
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "AllBlogs/all_blogs.css" %}" />
+  <link rel="stylesheet" href="{% static "blog.css" %}" />
+{% endblock css_files %}
+
+{% block content %}
+<section id="all-blogs">
+  <h2>My Collected Posts</h2>
+  <ul>
+    <!-- same blog is included multiple times this will be different blogs but for 
+    now it is only to save time-->
+      {% include "includes/blog.html" %}
+      {% include "includes/blog.html" %}
+      {% include "includes/blog.html" %}
+      {% include "includes/blog.html" %}
+      {% include "includes/blog.html" %}
+      {% include "includes/blog.html" %}
+  </ul>
+</section>
+{% endblock content %}

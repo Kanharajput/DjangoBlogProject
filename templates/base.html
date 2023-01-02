@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block page_title %} {% endblock page_title %}</title>
+    <link rel="stylesheet" href="{% static 'base.css' %}">   <!--when we use base.html then it must be needed to have it's css file-->
     {% block css_files %} {% endblock css_files %}       <!--here we inject css files-->
 </head>
 <body>
+    <!--header is directly in base file because we want it on each page-->
+    <header id="main-navigation">
+        <h1><a href="">Kanha's Blog</h1>
+          <nav>
+            <a href="">All Blogs</a>
+          </nav>  
+      </header>
     {% block content %}
         <!--content is injected here-->
     {% endblock content %}

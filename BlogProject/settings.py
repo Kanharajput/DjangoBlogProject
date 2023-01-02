@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'Home',                           # automatically access template's files
+    'AllBlogs',                        # add AllBlogs apps so that we can pick up static and template files automatically
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -1,3 +1,6 @@
+/* I put the css file of each template in the base folder of app which is using 
+that template so it will be not a headache to find the css file of that template 
+because it is always in the same app' folder*/
 #welcome {
     background: linear-gradient(to right top, #6305dd, #390281);
     padding: 6rem 12%;
