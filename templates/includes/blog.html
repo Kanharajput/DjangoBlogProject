@@ -3,7 +3,7 @@ and it  save our work and time by just including without copying the same data s
 {% load static %}
 <li>
     <article class="blog">
-      <a href="">
+      <a href="{% url 'blogDetails_page' "kanha" %}">     <!--kanha is slug here because url have a slug/variable-->
         <image src="{% static 'images/moutain.jpg' %}" alt="Moutain hiking">
         <div class="blog__content">
           <h3>Mountain Hiking</h3>
