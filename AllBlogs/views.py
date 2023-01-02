@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from .Helper.BlogDetailsData import all_blogs
 # Create your views here.
 
@@ -7,4 +8,9 @@ def showAllBlogs(request):
     return render(request,'AllBlogs/all_blogs.html',{'all_blogs':all_blogs})
 
 def blogDetails(request,blog_name):
-    return render(request,'AllBlogs/blog_detail.html')
+    for clicked_blog in all_blogs:
+        if clicked_blog['slug'] == blog_name:
+            return render(request,'AllBlogs/blog_detail.html',{'clicked_blog':clicked_blog})
+
+    else:
+        return HttpResponse("page not found")

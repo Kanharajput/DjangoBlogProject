@@ -11,26 +11,16 @@
 
 {% block content %}
     <section id="summary">
-        <h2>Blog Title</h2>
+        <h2>{{clicked_blog.title}}</h2>
         <article>
-            <img src="{% static 'images/moutain.jpg' %}" alt="Blog image">
-            <address>By Kanha</address>
+            <img src="{% static 'images/'|add:clicked_blog.image %}" alt="{{clicked_blog.title}}">
+            <address>{{clicked_blog.author}}</address>
             <div>
-                Last update on <time> 2 January 2023</time>
+                Last update on <time>{{clicked_blog.date|date:"D d M Y"}}</time>
             </div>
         </article>
     </section>
     <main>
-        <p> Ea fugiat excepteur cillum exercitation consequat aliquip ipsum sunt est voluptate. Irure ipsum excepteur sit Lorem in exercitation duis duis elit tempor aliqua ullamco cupidatat deserunt. Non eiusmod reprehenderit est dolor laboris excepteur excepteur. Adipisicing ea ex aliqua nisi aliqua pariatur proident. Proident eu fugiat aliquip proident qui cupidatat adipisicing ut sunt irure.
-        </p>
-
-        <p> Ea fugiat excepteur cillum exercitation consequat aliquip ipsum sunt est voluptate. Irure ipsum excepteur sit Lorem in exercitation duis duis elit tempor aliqua ullamco cupidatat deserunt. Non eiusmod reprehenderit est dolor laboris excepteur excepteur. Adipisicing ea ex aliqua nisi aliqua pariatur proident. Proident eu fugiat aliquip proident qui cupidatat adipisicing ut sunt irure.
-        </p>
-        
-        <p> Ea fugiat excepteur cillum exercitation consequat aliquip ipsum sunt est voluptate. Irure ipsum excepteur sit Lorem in exercitation duis duis elit tempor aliqua ullamco cupidatat deserunt. Non eiusmod reprehenderit est dolor laboris excepteur excepteur. Adipisicing ea ex aliqua nisi aliqua pariatur proident. Proident eu fugiat aliquip proident qui cupidatat adipisicing ut sunt irure.
-        </p>
-
-        <p> Ea fugiat excepteur cillum exercitation consequat aliquip ipsum sunt est voluptate. Irure ipsum excepteur sit Lorem in exercitation duis duis elit tempor aliqua ullamco cupidatat deserunt. Non eiusmod reprehenderit est dolor laboris excepteur excepteur. Adipisicing ea ex aliqua nisi aliqua pariatur proident. Proident eu fugiat aliquip proident qui cupidatat adipisicing ut sunt irure.
-        </p>
+        <p>{{clicked_blog.content}}</p>
     </main>
 {% endblock content %}
