@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .Helper.BlogDetailsData import all_blogs
+from Home.Helper.BlogDetailsData import all_blogs       # directly getting it from home app
 # Create your views here.
 
 # render the all_blogs html page
