@@ -6,12 +6,21 @@ from django.core.validators import MinLengthValidator
 class Tag(models.Model):
     caption = models.CharField(max_length=20)
 
+    # represent tag objects by caption 
+    def __str__(self):
+        return self.caption
+
 
 # Author model having relation one to many with Post model
 class Author(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email_addr = models.EmailField()
+
+    # represent Author object by their name
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+
 
 # having post data 
 class Post(models.Model):
@@ -24,3 +33,7 @@ class Post(models.Model):
     author = models.ForeignKey(Author,on_delete=models.SET_NULL,related_name='posts',null=True)      # one to many relation 
     tags = models.ManyToManyField(Tag)              # ManyToManyRelation with tag
 
+    # represent post entry by it post title
+    def __str__(self):
+        return self.title
+    
