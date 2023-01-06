@@ -13,7 +13,7 @@
     <section id="summary">
         <h2>{{clicked_blog.title}}</h2>
         <article>
-            <img src="{% static 'images/'|add:clicked_blog.image %}" alt="{{clicked_blog.title}}">
+            <img src="{% static 'images/'|add:clicked_blog.image_name %}" alt="{{clicked_blog.title}}">
             <address>{{clicked_blog.author}}</address>
             <div>
                 Last update on <time>{{clicked_blog.date|date:"D d M Y"}}</time>
