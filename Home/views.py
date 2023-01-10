@@ -1,10 +1,15 @@
 from django.shortcuts import render
 from AllBlogs.models import Post        # getting this post form AllBlogs app 
-
+from django.views.generic import ListView
 # Create your views here.
 
-def home (request):
-    # sort posts according to date in descending order
-    # this will make a whole then hit the database that's how this will not affect the performance of database
-    latest_blogs = Post.objects.all().order_by("-date")[:3]   
-    return render(request,'Home/home.html',{'latest_blogs':latest_blogs})  
+class Home(ListView):
+    model = Post
+    template_name = "Home/home.html"
+    ordering = ["-date"]               # sort the entries in decreasing order
+    context_object_name = "latest_blogs"
+
+    def get_queryset(self):
+        base_query = super().get_queryset()
+        three_items = base_query[:3]             # select the first three entries 
+        return three_items
