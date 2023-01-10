@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post
-from django.views.generic import ListView
+from django.views.generic import ListView,DetailView
 # Create your views here.
 
 # render the all_blogs html page
@@ -11,11 +11,8 @@ class ShowAllBlogs(ListView):
     template_name = "AllBlogs/all_blogs.html"
     
 
-def blogDetails(request,blog_name):
-    # post = Post.objects.get(slug=blog_name) if post not found so return 404 template
-    post = get_object_or_404(Post, slug=blog_name)
-    tags = post.tags.all()               # getting all tag entries related with this post as a list
-    return render(request,
-                    'AllBlogs/blog_detail.html',
-                        {"clicked_blog":post, "post_tags":tags} 
-                    )
+class BlogDetails(DetailView):
+    template_name = "AllBlogs/blog_detail.html"
+    model = Post
+    context_object_name = "clicked_blog"
+

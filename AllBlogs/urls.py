@@ -4,5 +4,6 @@ from . import views
 
 urlpatterns = [
     path('',views.ShowAllBlogs.as_view(),name="allBlogs_page"),                       # http://127.0.0.1:8000/allblogs/
-    path('<str:blog_name>',views.blogDetails,name="blogDetails_page")            # http://127.0.0.1:8000/allblogs/blogname
+    # DetailView can automatically match slug in url with slug in model and return the entry
+    path('<slug:slug>',views.BlogDetails.as_view(),name="blogDetails_page")            # http://127.0.0.1:8000/allblogs/blogname
 ]
