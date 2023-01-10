@@ -1,12 +1,15 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post
+from django.views.generic import ListView
 # Create your views here.
 
-# removed the data local data now the data is fetched from database
 # render the all_blogs html page
-def showAllBlogs(request):
-    posts = Post.objects.all()
-    return render(request,'AllBlogs/all_blogs.html',{"all_blogs":posts})
+# LIstview to pass all entries in model to template
+# by default dictionary name is object list
+class ShowAllBlogs(ListView):
+    model = Post
+    template_name = "AllBlogs/all_blogs.html"
+    
 
 def blogDetails(request,blog_name):
     # post = Post.objects.get(slug=blog_name) if post not found so return 404 template

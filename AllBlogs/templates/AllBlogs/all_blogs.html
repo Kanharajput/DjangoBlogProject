@@ -15,7 +15,7 @@
   <h2>My Collected Posts</h2>
   <ul>
       <!-- get all blogs-->
-      {% for blog in all_blogs %}
+      {% for blog in object_list %}
         {% include "includes/blog.html" %}
       {% endfor %}
   </ul>
