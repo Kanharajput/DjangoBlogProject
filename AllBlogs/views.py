@@ -16,3 +16,11 @@ class BlogDetails(DetailView):
     model = Post
     context_object_name = "clicked_blog"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # object is the Blog which details are showing right now 
+        # tags is many to many field that'swhy we are accessing all tags
+        tags = self.object.tags.all()               
+        context["post_tags"] = tags
+        return context
+    
