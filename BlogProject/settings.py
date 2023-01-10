@@ -130,3 +130,9 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# folder where media files go uploaded
+MEDIA_ROOT = BASE_DIR/"Media"
+
+# MEDIA_URL which will be exposed to external world
+MEDIA_URL = "/media-files/"

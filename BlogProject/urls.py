@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include("Home.urls")),                      # http://127.0.0.1:8000/
     path('allblogs/',include("AllBlogs.urls"))          # http://127.0.0.1:8000/allblogs/
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)   # adding media files to base urls
+ 

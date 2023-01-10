@@ -18,7 +18,7 @@
             {% endfor %}
         </div>
         <article>
-            <img src="{% static 'images/'|add:clicked_blog.image_name %}" alt="{{clicked_blog.title}}">
+            <img src="{{clicked_blog.image.url}}" alt="{{clicked_blog.title}}">
             <address><a href="mailto:{{clicked_blog.author.email_addr}}">{{clicked_blog.author}}</a></address>
             <div>
                 Last update on <time>{{clicked_blog.date|date:"D d M Y"}}</time>

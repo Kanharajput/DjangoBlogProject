@@ -26,7 +26,7 @@ class Author(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=150)
     date = models.DateField(auto_now=True)    # put the date in the field at which time we are saving the data
-    image_name = models.CharField(max_length=50)          # later on we upload files right now we get images from static folder
+    image = models.ImageField(upload_to="Images", null=True)          # upload images to Images folder which will be inside MEDIA_ROOT
     excerpt = models.CharField(max_length=200)
     content = models.TextField(validators=[MinLengthValidator(10)])    # TextFields same like CharField
     slug = models.SlugField(unique=True, db_index=True)     # set it as unique because we are going to use it as a primary key
