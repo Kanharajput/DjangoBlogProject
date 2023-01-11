@@ -27,13 +27,17 @@
         </div>
         
         <div id="read-later">
-            {% if not exist_in_RL %}
             <form action="{% url 'read_later' %}" method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="clicked_blog_id" value="{{clicked_blog.id}}"/>
-                <button>Read Later</button>
+                <button>
+                    {% if not exist_in_RL %}
+                        Read Later
+                    {% else %}
+                        Remove form Read Later
+                    {% endif %}
+                </button>
             </form>
-            {% endif %}
         </div>  
 
         <article>

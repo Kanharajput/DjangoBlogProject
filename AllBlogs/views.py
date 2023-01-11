@@ -95,9 +95,15 @@ class ReadLater(View):
         # get the clicked_blog id which we need to save for read later
         blog_id = int(request.POST["clicked_blog_id"])        
 
-        # if id of blog is not list then add it 
+        # if id of blog is not in list then add it 
         if blog_id not in stored_post_ids:
             stored_post_ids.append(blog_id)
-            request.session["stored_post_ids"] = stored_post_ids
+
+        else:
+            # if blog_id exist means this time user click for remove from read later button
+            stored_post_ids.remove(blog_id)    
+
+        # save the modification in session
+        request.session["stored_post_ids"] = stored_post_ids
         
         return HttpResponseRedirect(reverse("allBlogs_page"))
