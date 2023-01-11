@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post
 from django.views.generic import ListView,DetailView
+from .forms import CommentForm
+
 # Create your views here.
 
 # render the all_blogs html page
@@ -22,5 +24,6 @@ class BlogDetails(DetailView):
         # tags is many to many field that'swhy we are accessing all tags
         tags = self.object.tags.all()               
         context["post_tags"] = tags
+        context["comment_form"] = CommentForm()
         return context
     

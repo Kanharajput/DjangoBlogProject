@@ -28,4 +28,12 @@
     <main>
         <p>{{clicked_blog.content}}</p>
     </main>
+
+    <form>
+        <!--render the comment form which is created using Comment model-->
+        {{comment_form}}
+        <button>Save Comment</button>
+    </form>
+
+
 {% endblock content %}
