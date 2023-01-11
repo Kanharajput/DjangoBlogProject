@@ -31,7 +31,8 @@
 
     <section id="comment-form">
         <h2>Your Comment</h2>
-        <form>
+        <form action="{% url 'blogDetails_page' clicked_blog.slug %}" method="POST">
+            {% csrf_token %}
             <!--render the comment form which is created using Comment model-->
             {% for form_field in comment_form %}
                 <div class="form-control">
