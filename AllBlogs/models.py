@@ -37,3 +37,11 @@ class Post(models.Model):
     def __str__(self):
         return self.title
     
+
+# comment to store user comment 
+class Comment(models.Model):
+    user_name = models.CharField(max_length=30)
+    email_addr = models.EmailField()
+    text = models.TextField(max_length=100)
+    # I think here we use cross model queries to find comments of a post from that post model
+    post = models.ForeignKey(Post,on_delete=models.CASCADE,related_name="comments")
