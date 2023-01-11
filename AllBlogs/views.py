@@ -16,16 +16,30 @@ class ShowAllBlogs(ListView):
     
 
 class BlogDetails(View):
+    def checkInReadLater(self,request,blog_id):
+        # check this post is in read later section or not to show button
+        stored_post_ids = request.session.get("stored_post_ids")
+        exist_in_read_later = True                                  
+
+        # is post id is not in stored_post_ids then will show the read later button on page
+        if stored_post_ids is None or blog_id not in stored_post_ids:
+            exist_in_read_later = False
+
+        return exist_in_read_later
+
+
     def get(self,request,slug):                         # it also accept slug as arguement
-        clicked_blog = Post.objects.get(slug=slug)       # remember get return a single object but filter return a queryset                   
+        clicked_blog = Post.objects.get(slug=slug)       # remember get return a single object but filter return a queryset   
         context = {
                     "clicked_blog":clicked_blog,
                         "post_tags":clicked_blog.tags.all(),             # tags can have multiple entries
                             # sort the comments in decreasing order by id
                             "comments":clicked_blog.comments.all().order_by("-id"),        # access all the comments of this blog, its cross model queries
-                                "comment_form":CommentForm()              # initialise the form 
+                                "comment_form":CommentForm(),              # initialise the form 
+                                    "exist_in_RL":self.checkInReadLater(request,clicked_blog.id),
                              }
         return render(request,"AllBlogs/blog_detail.html",context)
+
 
 
     # as this post method is coming from the same url that is blogDetails_page 
@@ -46,7 +60,8 @@ class BlogDetails(View):
         context = {
                     "clicked_blog":clicked_blog,
                         "tags":clicked_blog.tags.all(),             
-                            "comment_form":comment_form                # return the same comment form
+                            "comment_form":comment_form,                # return the same comment form
+                                "exist_in_RL":self.checkInReadLater(request,clicked_blog.id)
                              }
         return render(request,"AllBlogs/blog_detail.html",context)
 
@@ -86,4 +101,3 @@ class ReadLater(View):
             request.session["stored_post_ids"] = stored_post_ids
         
         return HttpResponseRedirect(reverse("allBlogs_page"))
-
