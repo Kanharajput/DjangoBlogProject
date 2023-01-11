@@ -10,6 +10,14 @@
 {% endblock css_files %}
 
 {% block content %}
+    {% if comment_form.errors %}
+        <div id="alert">
+            <h2>Failed to save the comments!</h2>
+            <p>Please check the form below and correct your errors</p>
+            <a href="#comment-form">Fix!</a>  <!--internal liking of-->
+        </div>
+    {% endif %}
+
     <section id="summary">
         <h2>{{clicked_blog.title}}</h2>
         <div>
@@ -35,7 +43,8 @@
             {% csrf_token %}
             <!--render the comment form which is created using Comment model-->
             {% for form_field in comment_form %}
-                <div class="form-control">
+            <!--set class name invalid if there are errors-->
+                <div class="form-control {% if form_field.errors %}invalid{% endif %}">      
                     {{form_field.label_tag}}
                     {{form_field}}
                     {{form_field.errors}}
