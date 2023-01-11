@@ -25,6 +25,11 @@
                 <span class="tag">{{tag.caption}}</span>
             {% endfor %}
         </div>
+        
+        <div id="read-later">
+            <button>Read Later</button>
+        </div>  
+
         <article>
             <img src="{{clicked_blog.image.url}}" alt="{{clicked_blog.title}}">
             <address><a href="mailto:{{clicked_blog.author.email_addr}}">{{clicked_blog.author}}</a></address>

@@ -20,7 +20,7 @@ class BlogDetails(View):
         clicked_blog = Post.objects.get(slug=slug)       # remember get return a single object but filter return a queryset                   
         context = {
                     "clicked_blog":clicked_blog,
-                        "tags":clicked_blog.tags.all(),             # tags can have multiple entries
+                        "post_tags":clicked_blog.tags.all(),             # tags can have multiple entries
                             # sort the comments in decreasing order by id
                             "comments":clicked_blog.comments.all().order_by("-id"),        # access all the comments of this blog, its cross model queries
                                 "comment_form":CommentForm()              # initialise the form 
