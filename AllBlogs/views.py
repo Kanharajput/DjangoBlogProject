@@ -52,3 +52,38 @@ class BlogDetails(View):
 
 
     
+class ReadLater(View):
+    def get(self,request):
+        # get the list of ids of blogs which are set as read later 
+        stored_post_ids = request.session.get("stored_post_ids")       
+        context = {}                       # create a dictionary to pass in tempalte
+        
+        if stored_post_ids is None or len(stored_post_ids)==0:        # check is there any ids or not
+            context["hasBlogs"] = False 
+            context["blogs"] = []
+    
+        else:
+            blogs = Post.objects.filter(id__in=stored_post_ids)     # it will return all post whose id is in store_post_ids
+            context["hasBlogs"] = True
+            context["blogs"] = blogs
+
+        return render(request,"AllBlogs/read_later.html",context)
+
+
+    def post(self,request):
+        # access the stored id if it is first time then it return None
+        stored_post_ids = request.session.get("stored_post_ids")       
+
+        if stored_post_ids is None:     # if None then create a stored_post_ids list
+            stored_post_ids = []
+
+        # get the clicked_blog id which we need to save for read later
+        blog_id = int(request.POST["clicked_blog_id"])        
+
+        # if id of blog is not list then add it 
+        if blog_id not in stored_post_ids:
+            stored_post_ids.append(blog_id)
+            request.session["stored_post_ids"] = stored_post_ids
+        
+        return HttpResponseRedirect(reverse("allBlogs_page"))
+

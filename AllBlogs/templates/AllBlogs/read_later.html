@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_files %}
+<!-- this page also having the same template like all blogs page so we can apply  the style of all blogs page to this also
+    here only the change in blogs objects -->
+<link rel="stylesheet" href="{% static "AllBlogs/all_blogs.css" %}" />
+<link rel="stylesheet" href="{% static "blog.css" %}" />
+{% endblock css_files %}
+
+{% block content %}
+    <h1>Your Read Later Blogs</h1>
+    <ul>
+        {% if hasBlogs %}
+            <!-- get all blogs-->
+            {% for blog in blogs %}
+                {% include "includes/blog.html" %}
+            {% endfor %}
+
+        {% else %}
+            <h2>There is no read later set by you.</h2>
+        {% endif %}
+    </ul>
+
+{% endblock content %}
+
+
+
