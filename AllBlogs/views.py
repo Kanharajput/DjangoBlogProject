@@ -21,7 +21,9 @@ class BlogDetails(View):
         context = {
                     "clicked_blog":clicked_blog,
                         "tags":clicked_blog.tags.all(),             # tags can have multiple entries
-                            "comment_form":CommentForm()              # initialise the form 
+                            # sort the comments in decreasing order by id
+                            "comments":clicked_blog.comments.all().order_by("-id"),        # access all the comments of this blog, its cross model queries
+                                "comment_form":CommentForm()              # initialise the form 
                              }
         return render(request,"AllBlogs/blog_detail.html",context)
 
