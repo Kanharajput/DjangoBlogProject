@@ -23,8 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&@@kuw8#xgkn=d29hh4kie2fk&#^-rn&bntko5c^%y4!2h#0u^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
+# we have to pass the host at which we will upload the site
 ALLOWED_HOSTS = []
 
 
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# path where we have all urls
 ROOT_URLCONF = 'BlogProject.urls'
 
 TEMPLATES = [
@@ -68,13 +70,13 @@ TEMPLATES = [
         },
     },
 ]
-
+# path of wsgi file
 WSGI_APPLICATION = 'BlogProject.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
+# database info
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -120,6 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR/"staticfiles"        # collect all the static files in this folder 
 
 # adding the root static directory
 STATICFILES_DIRS = [
