@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include("Home.urls")),                      # http://127.0.0.1:8000/
     path('allblogs/',include("AllBlogs.urls"))          # http://127.0.0.1:8000/allblogs/
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)   # adding media files to base urls
- 
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
+  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)     # add static urls
