@@ -29,7 +29,8 @@ DEBUG = getenv("IS_DEVELOPMENT",True)
 
 # we have to pass the host at which we will upload the site
 ALLOWED_HOSTS = [
-    getenv("APP_HOST")
+    # remove for now to run it on localhost
+    getenv("APP_HOST","127.0.0.1")        # second parameter of getenv is default
 ]
 
 
