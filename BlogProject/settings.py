@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from os import getenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,10 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&@@kuw8#xgkn=d29hh4kie2fk&#^-rn&bntko5c^%y4!2h#0u^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# we  can pass this value at production time using this keys
+DEBUG = getenv("IS_DEVELOPMENT",True)                 
 
 # we have to pass the host at which we will upload the site
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    getenv("APP_HOST")
+]
 
 
 # Application definition
